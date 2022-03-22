@@ -3,10 +3,12 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import '../styles/auth.scss'
 
-
 import { Link } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 
 const NewRoom = () => {
+  const {user, signInWithGoogle} = useAuth()
+  
   return (
     <section id='page-auth'>
     <aside>

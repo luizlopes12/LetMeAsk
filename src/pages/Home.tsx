@@ -4,11 +4,16 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
+import { useAuth } from '../hooks/useAuth'
 
 
 const Home = () => {
     const navigate = useNavigate()
-    const navigateToNewRoom = () =>{
+    const {user, signInWithGoogle} = useAuth()
+    const handleCreateRoom = async() =>{
+        if(!user){
+            await signInWithGoogle()
+        }
         navigate('/rooms/new')
     }
 
@@ -22,7 +27,7 @@ const Home = () => {
     <main>
         <div className='main-content'>
             <img src={logoImg} alt="Let Me ask" />
-            <button className='create-room' onClick={navigateToNewRoom} >
+            <button className='create-room' onClick={handleCreateRoom} >
                 <img src={googleIconImg} alt="Logo do Google" />
                 Crie sua sala com Google
             </button>
