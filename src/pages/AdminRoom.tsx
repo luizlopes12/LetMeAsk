@@ -1,7 +1,9 @@
 
 import { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import deleteImg from '../assets/images/delete.svg'
 import logoImg from '../assets/images/logo.svg'
 import Button from '../components/Button'
 import RoomCode from '../components/RoomCode'
@@ -17,8 +19,25 @@ type RoomParams = {
 const AdminRoom = () => {
     // const { user } = useAuth()
     const params = useParams<RoomParams>()
+    const navigate = useNavigate()
     const roomId = params.id
     const { questions, title} = useRoom(roomId)
+
+    const handleEndRoom = async() =>{
+        await database.ref(`rooms/${roomId}`).update({
+            endedAt: new Date(),
+        })
+        navigate('/')
+    }
+
+    const handleDeleteQuestion = async(questionId: string)=>{
+        if(window.confirm('Tem certeza que deseja excluir esta pergunta?')){
+            await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+
+        }
+    }
+
+
 
   return (
     <section id='page-room'>
@@ -27,7 +46,7 @@ const AdminRoom = () => {
                 <img src={logoImg} alt="Let me ask" />
                 <div>
                 <RoomCode code={`${roomId}`}/>
-                <Button isOutlined>Encerrar sala</Button>
+                <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
                 </div>
             </div>
         </header>
@@ -46,7 +65,14 @@ const AdminRoom = () => {
                     key={question.id}
                     content={question.content}
                     author={question.author}
-                    />
+                    >
+                        <button
+                        type='button'
+                        onClick={()=> handleDeleteQuestion(question.id)}
+                        >
+                            <img src={deleteImg} alt="Deletar Pergunta" />
+                        </button>
+                    </Question>
                 )
             })}
             </div>

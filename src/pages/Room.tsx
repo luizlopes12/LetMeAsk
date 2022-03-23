@@ -22,11 +22,9 @@ const Room = () => {
     const { questions, title} = useRoom(roomId)
 
 
-    const handleLikeQuestion = async(questionId: string, hasLiked: boolean) =>{
-        if(hasLiked){
-            const newLike = await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-                authorId: user?.id,
-            })
+    const handleLikeQuestion = async(questionId: string, likeId: string | undefined) =>{
+        if(likeId){
+            const newLike = await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
         }else{
             const newLike = await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
                 authorId: user?.id,
@@ -106,10 +104,10 @@ const Room = () => {
                     content={question.content}
                     author={question.author}
                     >
-                        <button className={`like-button ${question.hasLiked? 'liked' : ''}`}
+                        <button className={`like-button ${question.likeId? 'liked' : ''}`}
                         type='button'
                         aria-label='Marcar como gostei'
-                        onClick={()=> handleLikeQuestion(question.id, question.hasLiked )}
+                        onClick={()=> handleLikeQuestion(question.id, question.likeId )}
                         >
                             {question.likeCount> 0 && <span>{question.likeCount}</span> }
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
