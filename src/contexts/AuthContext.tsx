@@ -55,9 +55,7 @@ const AuthContextProvider = (props: AuthCOntextProviderProps) => {
             })
           }
         })
-        return () =>{
-          unsubscribe();
-        }
+        
       },[])
     
   return (
