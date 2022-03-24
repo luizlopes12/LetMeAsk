@@ -1,10 +1,9 @@
 import "./services/firebase";
-import { createContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import './styles/global.scss'
 import NewRoom from "./pages/NewRoom";
 import Room from "./pages/Room/Room";
-
 import AuthContextProvider from "./contexts/AuthContext";
 import AdminRoom from "./pages/AdminRoom";
 
