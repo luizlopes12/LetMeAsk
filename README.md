@@ -11,6 +11,7 @@ Disponível em: https://letmeask-14c72.web.app
 
 - React
 - Sass/Scss
+- Styled Components
 - Typescript
 - Firebase
 - React Context API
