@@ -1,7 +1,7 @@
 import Button from "../../components/Button";
 import illustrationImg from "../../assets/images/illustration.svg";
 import logoImg from "../../assets/images/logo.svg";
-import "./styles.scss";
+import { NewRoomStyles } from "./styled";
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -26,6 +26,7 @@ const NewRoom = () => {
     navigate(`/rooms/${firebaseRoom.key}`);
   };
   return (
+    <NewRoomStyles>
     <section id="page-auth">
       <aside>
         <img
@@ -54,6 +55,7 @@ const NewRoom = () => {
         </div>
       </main>
     </section>
+    </NewRoomStyles>
   );
 };
 

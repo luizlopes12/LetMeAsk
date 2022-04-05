@@ -1,3 +1,6 @@
+import styled from 'styled-components'
+
+export const AdminStyles = styled.section`
 #page-room {
   header {
     padding: 24px;
@@ -110,3 +113,39 @@
     }
   }
 }
+@media (max-width: 900px) {
+    #page-room {
+      header {
+        padding: 10px 0;
+        border-bottom: 1px solid #e2e2e2;
+        .content {
+          max-width: 90%;
+          > img {
+            max-height: 36px;
+          }
+          .room-code {
+            width: 220px;
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      main {
+        max-width: 90%;
+        margin: 0 auto;
+        .room-title {
+          h1 {
+            font-size: 20px;
+          }
+        }
+        form {
+          button {
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+`;

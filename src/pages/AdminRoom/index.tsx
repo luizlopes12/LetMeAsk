@@ -6,7 +6,7 @@ import answerImg from "../../assets/images/answer.svg";
 import logoImg from "../../assets/images/logo.svg";
 import Button from "../../components/Button";
 import RoomCode from "../../components/RoomCode";
-import "./styles.scss";
+import { AdminStyles } from "./styled";
 import { database } from "../../services/firebase";
 import Question from "../../components/Question";
 import useRoom from "../../hooks/useRoom";
@@ -48,6 +48,7 @@ const AdminRoom = () => {
   };
 
   return (
+    <AdminStyles>
     <section id="page-room">
       <header>
         <div className="content">
@@ -111,6 +112,7 @@ const AdminRoom = () => {
         </div>
       </main>
     </section>
+    </AdminStyles>
   );
 };
 

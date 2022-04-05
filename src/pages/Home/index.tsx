@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import illustrationImg from "../../assets/images/illustration.svg";
 import logoImg from "../../assets/images/logo.svg";
 import googleIconImg from "../../assets/images/google-icon.svg";
-import "./styles.scss";
+import {  HomeStyles } from "./styled";
 import { useAuth } from "../../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { database } from "../../services/firebase";
@@ -39,6 +39,7 @@ const Home = () => {
     navigate(`rooms/${roomCode}`);
   };
   return (
+    <HomeStyles>
     <section id="page-auth">
       <aside>
         <img
@@ -68,6 +69,7 @@ const Home = () => {
         </div>
       </main>
     </section>
+    </HomeStyles>
   );
 };
 

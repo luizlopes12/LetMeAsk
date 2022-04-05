@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import logoImg from "../../assets/images/logo.svg";
 import Button from "../../components/Button";
 import RoomCode from "../../components/RoomCode";
-import "./styles.scss";
+import { RoomStyles } from "./styled";
 import { database } from "../../services/firebase";
 import Question from "../../components/Question";
 import useRoom from "../../hooks/useRoom";
@@ -63,6 +63,8 @@ const Room = () => {
   };
 
   return (
+    <RoomStyles>
+
     <section id="page-room">
       <header>
         <div className="content">
@@ -147,6 +149,7 @@ const Room = () => {
         </div>
       </main>
     </section>
+    </RoomStyles>
   );
 };
 

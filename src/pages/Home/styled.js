@@ -1,8 +1,10 @@
+import styled from 'styled-components'
+
+export const HomeStyles = styled.section`
 #page-auth {
   display: flex;
   align-items: stretch;
   height: 100vh;
-
   aside {
     flex: 7;
     background: #835afd;
@@ -125,3 +127,36 @@
     }
   }
 }
+
+@media(max-width: 900px){
+  #page-auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  aside {
+    flex: 1;
+    align-items: center;
+    padding: 70px 20px;
+    margin-bottom: 60px;
+    img {
+      max-width: 160px;
+    }
+    strong {
+      font: 700 28px "Poppins", sans-serif;
+    }
+    p {
+      font-size: 18px;
+      line-height: 24px;
+      margin-top: 8px;
+    }
+  }
+  main {
+    flex: 1;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 100px;
+  }
+}
+}
+`;
